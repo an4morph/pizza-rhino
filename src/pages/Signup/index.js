@@ -1,10 +1,11 @@
 import React from 'react'
 import PageTemplate from '../../components/PageTemplate'
+import SignupForm from '../../components/SignupForm'
 
 function SignupPage() {
   return (
     <PageTemplate>
-      SignupPage
+      <SignupForm />
     </PageTemplate>
   )
 }
