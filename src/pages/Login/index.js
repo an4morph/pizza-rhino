@@ -1,12 +1,12 @@
 import React from 'react'
 import PageTemplate from '../../components/PageTemplate'
 
-function HomePage() {
+function LoginPage() {
   return (
     <PageTemplate>
-      HomePage
+      LoginPage
     </PageTemplate>
   )
 }
 
-export default HomePage
+export default LoginPage
