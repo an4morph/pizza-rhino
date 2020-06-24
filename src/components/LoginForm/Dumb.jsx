@@ -1,9 +1,12 @@
 import React from 'react'
-import { shape, string, func } from 'prop-types'
+import { shape, string, func, bool } from 'prop-types'
 import Input from '../Input'
 import Button from '../Button'
 
-function LoginForm({ formName, formData, changeField, handleLogin }) {
+function LoginForm({
+  formName, formData, changeField, handleSubmit,
+  loading, failed, error,
+}) {
   const { username, password } = formData
 
   return (
@@ -21,8 +24,12 @@ function LoginForm({ formName, formData, changeField, handleLogin }) {
         onChange={(value) => changeField('password', value)}
         type="password"
       />
-      <Button onClick={handleLogin}>
-        Sign up
+      {failed && <div>{error}</div>}
+      <Button
+        disabled={loading}
+        onClick={handleSubmit}
+      >
+        {loading ? 'Loading' : 'Log in'}
       </Button>
     </>
   )
@@ -34,8 +41,11 @@ LoginForm.propTypes = {
     password: string.isRequired,
   }).isRequired,
   changeField: func.isRequired,
-  handleLogin: func.isRequired,
+  handleSubmit: func.isRequired,
   formName: string.isRequired,
+  loading: bool.isRequired,
+  failed: bool.isRequired,
+  error: string,
 }
 
 export default LoginForm
