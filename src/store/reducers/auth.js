@@ -2,12 +2,22 @@ import {
   LOGIN_SUCCESS,
   LOGIN_LOADING,
   LOGIN_FAILED,
+
+  SIGNUP_SUCCESS,
+  SIGNUP_LOADING,
+  SIGNUP_FAILED,
 } from '../constants'
 import stateCreator from '../../services/stateCreator'
 
 const initialState = {
   me: null,
   login: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
+  signup: {
     success: false,
     loading: false,
     failed: false,
@@ -32,6 +42,22 @@ export default (state = initialState, action) => {
       return {
         ...state,
         login: stateCreator('failed', action.error),
+      }
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        me: action.me,
+        signup: stateCreator('success'),
+      }
+    case SIGNUP_LOADING:
+      return {
+        ...state,
+        signup: stateCreator('loading'),
+      }
+    case SIGNUP_FAILED:
+      return {
+        ...state,
+        signup: stateCreator('failed', action.error),
       }
     default: return state
   }

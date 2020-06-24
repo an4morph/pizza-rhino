@@ -2,6 +2,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_LOADING,
   LOGIN_FAILED,
+
+  SIGNUP_SUCCESS,
+  SIGNUP_LOADING,
+  SIGNUP_FAILED,
 } from '../constants'
 import { post } from '../api'
 import apiErrorHandler from '../../services/apiErrorHandler'
@@ -15,5 +19,17 @@ export const loginAction = (data) => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: LOGIN_FAILED, error: apiErrorHandler(err) })
+    })
+}
+
+export const signupAction = (data) => (dispatch) => {
+  dispatch({ type: SIGNUP_LOADING })
+  post('/signup', { data })
+    .then((res) => {
+      localStorage.setItem('token', res.data.token)
+      dispatch({ type: SIGNUP_SUCCESS, me: res.data.data })
+    })
+    .catch((err) => {
+      dispatch({ type: SIGNUP_FAILED, error: apiErrorHandler(err) })
     })
 }

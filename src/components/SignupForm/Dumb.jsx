@@ -1,9 +1,12 @@
 import React from 'react'
-import { shape, string, func } from 'prop-types'
+import { shape, string, func, bool } from 'prop-types'
 import Input from '../Input'
 import Button from '../Button'
 
-function SignupForm({ formName, formData, changeField, handleSignup }) {
+function SignupForm({
+  formName, formData, changeField, handleSubmit,
+  loading, failed, error,
+}) {
   const { username, password, repeatPassword } = formData
 
   return (
@@ -28,8 +31,12 @@ function SignupForm({ formName, formData, changeField, handleSignup }) {
         onChange={(value) => changeField('repeatPassword', value)}
         type="password"
       />
-      <Button onClick={handleSignup}>
-        Sign up
+      {failed && <div>{error}</div>}
+      <Button
+        disabled={loading}
+        onClick={handleSubmit}
+      >
+        {loading ? 'Loading' : 'Sign up'}
       </Button>
     </>
   )
@@ -42,8 +49,11 @@ SignupForm.propTypes = {
     repeatPassword: string.isRequired,
   }).isRequired,
   changeField: func.isRequired,
-  handleSignup: func.isRequired,
+  handleSubmit: func.isRequired,
   formName: string.isRequired,
+  loading: bool.isRequired,
+  failed: bool.isRequired,
+  error: string,
 }
 
 export default SignupForm
