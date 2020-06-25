@@ -6,6 +6,10 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_LOADING,
   SIGNUP_FAILED,
+
+  CHANGE_PASSWORD_SUCCESS,
+  CHANGE_PASSWORD_LOADING,
+  CHANGE_PASSWORD_FAILED,
 } from '../constants'
 import stateCreator from '../../services/stateCreator'
 
@@ -18,6 +22,12 @@ const initialState = {
     error: '',
   },
   signup: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
+  changePassword: {
     success: false,
     loading: false,
     failed: false,
@@ -58,6 +68,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         signup: stateCreator('failed', action.error),
+      }
+    case CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        changePassword: stateCreator('success'),
+      }
+    case CHANGE_PASSWORD_LOADING:
+      return {
+        ...state,
+        changePassword: stateCreator('loading'),
+      }
+    case CHANGE_PASSWORD_FAILED:
+      return {
+        ...state,
+        changePassword: stateCreator('failed', action.error),
       }
     default: return state
   }

@@ -3,17 +3,11 @@ import { shape, string, func } from 'prop-types'
 import Input from '../Input'
 import Button from '../Button'
 
-function ProfileChangesForm({ formName, formData, changeField, handleChangeProfile }) {
-  const { username, password, repeatPassword } = formData
+function ProfileChangesForm({ formName, formData, changeField, handleSubmit }) {
+  const { password, repeatPassword } = formData
 
   return (
     <>
-      <Input
-        formName={formName}
-        name="username"
-        value={username}
-        onChange={(value) => changeField('username', value)}
-      />
       <Input
         formName={formName}
         name="password"
@@ -28,8 +22,8 @@ function ProfileChangesForm({ formName, formData, changeField, handleChangeProfi
         onChange={(value) => changeField('repeatPassword', value)}
         type="password"
       />
-      <Button onClick={handleChangeProfile}>
-        Sign up
+      <Button onClick={handleSubmit}>
+        Confirm changes
       </Button>
     </>
   )
@@ -37,12 +31,11 @@ function ProfileChangesForm({ formName, formData, changeField, handleChangeProfi
 
 ProfileChangesForm.propTypes = {
   formData: shape({
-    username: string.isRequired,
     password: string.isRequired,
     repeatPassword: string.isRequired,
   }).isRequired,
   changeField: func.isRequired,
-  handleChangeProfile: func.isRequired,
+  handleSubmit: func.isRequired,
   formName: string.isRequired,
 }
 

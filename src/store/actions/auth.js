@@ -6,6 +6,10 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_LOADING,
   SIGNUP_FAILED,
+
+  CHANGE_PASSWORD_SUCCESS,
+  CHANGE_PASSWORD_LOADING,
+  CHANGE_PASSWORD_FAILED,
 } from '../constants'
 import { post } from '../api'
 import apiErrorHandler from '../../services/apiErrorHandler'
@@ -31,5 +35,17 @@ export const signupAction = (data) => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: SIGNUP_FAILED, error: apiErrorHandler(err) })
+    })
+}
+
+export const changePasswordAction = (data) => (dispatch) => {
+  console.log('da', data)
+  dispatch({ type: CHANGE_PASSWORD_LOADING })
+  post('/change-password', { data, secure: true })
+    .then(() => {
+      dispatch({ type: CHANGE_PASSWORD_SUCCESS })
+    })
+    .catch((err) => {
+      dispatch({ type: CHANGE_PASSWORD_FAILED, error: apiErrorHandler(err) })
     })
 }
