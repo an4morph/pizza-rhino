@@ -5,7 +5,7 @@ import Button from '../Button'
 
 function LoginForm({
   formName, formData, changeField, handleSubmit,
-  loading, failed, error,
+  loading, failed, error, validation, showValidation,
 }) {
   const { username, password } = formData
 
@@ -16,6 +16,7 @@ function LoginForm({
         name="username"
         value={username}
         onChange={(value) => changeField('username', value)}
+        error={showValidation ? validation.username : ''}
       />
       <Input
         formName={formName}
@@ -23,6 +24,7 @@ function LoginForm({
         value={password}
         onChange={(value) => changeField('password', value)}
         type="password"
+        error={showValidation ? validation.password : ''}
       />
       {failed && <div>{error}</div>}
       <Button
@@ -40,12 +42,17 @@ LoginForm.propTypes = {
     username: string.isRequired,
     password: string.isRequired,
   }).isRequired,
+  validation: shape({
+    username: string.isRequired,
+    password: string.isRequired,
+  }).isRequired,
   changeField: func.isRequired,
   handleSubmit: func.isRequired,
   formName: string.isRequired,
   loading: bool.isRequired,
   failed: bool.isRequired,
   error: string,
+  showValidation: bool.isRequired,
 }
 
 export default LoginForm

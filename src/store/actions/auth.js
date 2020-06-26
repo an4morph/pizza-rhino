@@ -39,7 +39,6 @@ export const signupAction = (data) => (dispatch) => {
 }
 
 export const changePasswordAction = (data) => (dispatch) => {
-  console.log('da', data)
   dispatch({ type: CHANGE_PASSWORD_LOADING })
   post('/change-password', { data, secure: true })
     .then(() => {

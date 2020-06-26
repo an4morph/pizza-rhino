@@ -1,9 +1,12 @@
 import React from 'react'
-import { shape, string, func } from 'prop-types'
+import { shape, string, func, bool } from 'prop-types'
 import Input from '../Input'
 import Button from '../Button'
 
-function ProfileChangesForm({ formName, formData, changeField, handleSubmit }) {
+function ProfileChangesForm({
+  formName, formData, changeField, handleSubmit,
+  showValidation, validation,
+}) {
   const { password, repeatPassword } = formData
 
   return (
@@ -14,6 +17,7 @@ function ProfileChangesForm({ formName, formData, changeField, handleSubmit }) {
         value={password}
         onChange={(value) => changeField('password', value)}
         type="password"
+        error={showValidation ? validation.password : ''}
       />
       <Input
         formName={formName}
@@ -21,6 +25,7 @@ function ProfileChangesForm({ formName, formData, changeField, handleSubmit }) {
         value={repeatPassword}
         onChange={(value) => changeField('repeatPassword', value)}
         type="password"
+        error={showValidation ? validation.repeatPassword : ''}
       />
       <Button onClick={handleSubmit}>
         Confirm changes
@@ -34,9 +39,14 @@ ProfileChangesForm.propTypes = {
     password: string.isRequired,
     repeatPassword: string.isRequired,
   }).isRequired,
+  validation: shape({
+    password: string.isRequired,
+    repeatPassword: string.isRequired,
+  }).isRequired,
   changeField: func.isRequired,
   handleSubmit: func.isRequired,
   formName: string.isRequired,
+  showValidation: bool.isRequired,
 }
 
 export default ProfileChangesForm

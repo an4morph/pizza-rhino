@@ -2,7 +2,7 @@ import React from 'react'
 import { string, func, node } from 'prop-types'
 
 function Input({
-  label, formName, name, value, onChange, error, ...rest
+  label, formName, name, value, onChange, error = '', ...rest
 }) {
   const id = `${formName}-${name}`
 

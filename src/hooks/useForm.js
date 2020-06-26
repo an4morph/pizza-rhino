@@ -1,6 +1,17 @@
 import { useReducer } from 'react'
+import { validate } from '../services/validation'
 
-function useForm(initialState) {
+function getValidation(values, rules) {
+  const validationObj = {}
+  Object.keys(values).forEach((field) => {
+    const error = validate(values[field], rules && rules[field])
+    validationObj[field] = error
+  })
+  const isValid = !Object.values(validationObj).some((v) => !!v)
+  return [validationObj, isValid]
+}
+
+function useForm(initialState, _validationRules) {
   const reducer = (state, action) => {
     switch (action.type) {
       case 'CHANGE_FIELD':
@@ -24,10 +35,16 @@ function useForm(initialState) {
     dispatch({ type: 'RESET_FIELDS' })
   }
 
+  const validationRules = typeof _validationRules === 'function' ? _validationRules(formData) : _validationRules
+
+  const [validation, isValid] = getValidation(formData, validationRules)
+
   return {
     formData,
     changeField,
     resetFields,
+    validation,
+    isValid,
   }
 }
 
