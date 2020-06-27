@@ -16,7 +16,7 @@ function ProfileChangesForm({
       className={className}
       onSubmit={handleSubmit}
       submitting={loading}
-      buttonText="Log in"
+      buttonText="Confirm changes"
       submitFailed={failed}
       error={error}
       title={<Typography className={styles.title} tag="h2">Change password</Typography>}
