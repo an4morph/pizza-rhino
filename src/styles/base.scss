@@ -1,0 +1,18 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Rubik+Mono+One&family=Rubik:wght@400;500;700&display=swap');
+@import './vars.scss';
+
+body {
+  margin: 0;
+  font-family: $primaryFont;
+  color: $textColor;
+  background-color: $siteBg;
+  height: $buttonHeight;
+}
+
+input, textarea, button {
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px $linkColor;
+  }
+}
