@@ -1,0 +1,17 @@
+@import '../../styles/vars.scss';
+
+.sidebar {
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: $sidebarBg;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  transform: translateX(-100%);
+  transition: all .4s;
+  will-change: transform;
+}
+.open {
+  transform: translateX(0);
+}
