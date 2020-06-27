@@ -10,6 +10,11 @@ body {
   height: $buttonHeight;
 }
 
+::selection {
+  background-color: $linkColor;
+  color: $invertMainColor;
+}
+
 input, textarea, button {
   &:focus {
     outline: none;

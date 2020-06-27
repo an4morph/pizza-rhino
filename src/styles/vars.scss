@@ -2,19 +2,26 @@ $secondaryFont: 'Raleway', sans-serif;
 $primaryFont: 'Rubik', sans-serif;
 $headingsFont: 'Rubik Mono One', sans-serif;
 
+$mainColor: #2F2C2B;
+$invertMainColor: #FFFFFF;
+
 $primaryColor: #E09165;
-$textColor: #2F2C2B;
+$textColor: $mainColor;
 $secondaryTextColor: #777676;
 $siteBg: #F5F5F5;
-$elementBg: #FFFFFF;
 $iconColor: #DAD5D2;
 $linkColor: #65A5E0;
 $errorColor: #C14A4A;
 
-$buttonBg: #2F2C2B;
+$buttonBg: $mainColor;
 $outline: 2px solid $linkColor;
 $buttonBgHover: #3c3836;
-$buttonText: #FFFFFF;
+$buttonText: $invertMainColor;
+$iconButtonBg: $invertMainColor;
+
+$formBg: $invertMainColor;
+$tabsBg: $invertMainColor;
+
 
 $borderRadius: 2px;
 $inputHeight: 38px;
