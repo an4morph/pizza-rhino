@@ -1,0 +1,21 @@
+@import '../../styles/vars.scss';
+
+.button {
+  cursor: pointer;
+  background-color: $buttonBg;
+  border-radius: $borderRadius;
+  border: none;
+  color: $buttonText;
+  padding: 0;
+  height: $buttonHeight;
+  width: 100%;
+  transition: all $transitionMs;
+
+  &:hover {
+    background-color: $buttonBgHover;
+    transition: all $transitionMs;
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+}
