@@ -2,6 +2,7 @@ import React from 'react'
 import PageTemplate from '../../components/PageTemplate'
 import TopMenu from '../../components/TopMenu'
 import Catalog from '../../components/Catalog'
+import styles from './home.module.scss'
 
 const mockPizza = [
   {
@@ -27,7 +28,7 @@ const mockPizza = [
 function HomePage() {
   return (
     <PageTemplate>
-      <TopMenu />
+      <TopMenu className={styles['top-menu']} />
       <Catalog items={mockPizza} />
     </PageTemplate>
   )
