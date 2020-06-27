@@ -1,0 +1,43 @@
+@import '../../styles/vars.scss';
+
+.item {
+  margin-bottom: 40px;
+}
+
+.item-info {
+  display: flex;
+}
+
+.right {
+  margin-left: 17px;
+}
+
+.avatar {
+  min-width: $catalogImageSize;
+  min-height: $catalogImageSize;
+  max-width: $catalogImageSize;
+  max-height: $catalogImageSize;
+  object-fit: cover;
+  border-radius: $borderRadius;
+  background-color: $iconColor;
+}
+
+.ingredients {
+  background-color: $invertMainColor;
+  display: block;
+  padding: 6px 8px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.desc {
+  margin: 10px 0;
+}
+
+.btn {
+  margin-top: 15px;
+}

@@ -12,6 +12,7 @@ function Catalog({ items, className }) {
           <CatalogItem
             key={item.id}
             item={item}
+            className={styles.item}
           />
         ))
       }

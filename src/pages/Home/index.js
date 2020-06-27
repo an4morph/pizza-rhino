@@ -11,6 +11,7 @@ const mockPizza = [
     desc: 'Classic italian pizza with tomatos',
     ingredients: ['tomatos', 'cashew cheese', 'basil', 'rosemary'],
     tags: ['soy free'],
+    imageSrc: '/images/pizza1.png',
   },
   {
     id: '7fj6jqqA8pP',
@@ -19,6 +20,7 @@ const mockPizza = [
     desc: 'Classic italian pizza with tomatos',
     ingredients: ['tomatos', 'cashew cheese', 'basil', 'rosemary'],
     tags: ['soy free'],
+    imageSrc: '/images/pizza1.png',
   },
 ]
 
