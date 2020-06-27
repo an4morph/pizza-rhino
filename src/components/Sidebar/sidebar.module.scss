@@ -15,3 +15,23 @@
 .open {
   transform: translateX(0);
 }
+
+.head {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $headerHeight;
+}
+
+.close-btn {
+  color: $iconColor;
+}
+
+.logo {
+  color: $primaryColor;
+}
+
+.content {
+  padding: 0 15px;
+}
