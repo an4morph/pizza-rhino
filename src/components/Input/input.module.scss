@@ -1,0 +1,33 @@
+@import '../../styles/vars.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.input {
+  height: $inputHeight;
+  box-sizing: border-box;
+  border: 1px solid $textColor;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: $borderRadius;
+  padding: 0 15px;
+
+  &-error {
+    border: 1px solid $errorColor;
+  }
+}
+
+.error {
+  color: $errorColor;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 2px;
+}
