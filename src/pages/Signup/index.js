@@ -2,10 +2,11 @@ import React from 'react'
 import { object } from 'prop-types'
 import PageTemplate from '../../components/PageTemplate'
 import SignupForm from '../../components/SignupForm'
+import styles from './page.module.scss'
 
 function SignupPage({ history }) {
   return (
-    <PageTemplate>
+    <PageTemplate className={styles.page}>
       <SignupForm history={history} />
     </PageTemplate>
   )
