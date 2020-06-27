@@ -1,0 +1,22 @@
+@import '../../styles/vars.scss';
+
+.form {
+  background-color: $formBg;
+  padding: 40px 23px 34px;
+  border-radius: $borderRadius;
+}
+
+.error {
+  margin-top: 12px;
+}
+
+.form-error {
+  color: $errorColor;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 20px;
+}
