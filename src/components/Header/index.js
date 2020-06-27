@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Logo from '../Icons/Logo'
+import MenuIcon from '../Icons/Menu'
+import IconButton from '../IconButton'
 import styles from './header.module.scss'
 
 function Header({ onMenuBtnClick }) {
   return (
     <div className={styles.header}>
-      <div className="logo">Logo</div>
-      <button type="button" onClick={onMenuBtnClick}>Open</button>
+      <Logo className={styles.logo} />
+      <IconButton
+        onClick={onMenuBtnClick}
+        icon={<MenuIcon />}
+        transparent
+        className={styles['menu-btn']}
+      />
     </div>
   )
 }

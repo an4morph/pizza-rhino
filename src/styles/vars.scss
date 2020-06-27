@@ -23,8 +23,11 @@ $formBg: $invertMainColor;
 $tabsBg: $invertMainColor;
 $sidebarBg: $invertMainColor;
 
+$headerBg: $invertMainColor;
+$headerShadow: 0px 0px 10px rgba($mainColor, 0.15);
 
 $borderRadius: 2px;
 $inputHeight: 38px;
 $buttonHeight: 38px;
+$headerHeight: 70px;
 $transitionMs: 0.3s;

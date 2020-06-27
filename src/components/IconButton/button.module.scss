@@ -1,0 +1,19 @@
+@import '../../styles/vars.scss';
+
+.button {
+  background-color: $iconButtonBg;
+  border: none;
+  width: $buttonHeight;
+  height: $buttonHeight;
+  border-radius: $borderRadius;
+  padding: 0;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.transparent {
+  background: none;
+}
