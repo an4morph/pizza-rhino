@@ -1,15 +1,7 @@
 import {
-  GET_PIZZA_SUCCESS,
-  GET_PIZZA_LOADING,
-  GET_PIZZA_FAILED,
-
-  GET_DRINKS_SUCCESS,
-  GET_DRINKS_LOADING,
-  GET_DRINKS_FAILED,
-
-  GET_SALADS_SUCCESS,
-  GET_SALADS_LOADING,
-  GET_SALADS_FAILED,
+  GET_CATALOG_SUCCESS,
+  GET_CATALOG_LOADING,
+  GET_CATALOG_FAILED,
 } from '../constants'
 import stateCreator from '../../services/stateCreator'
 
@@ -37,55 +29,25 @@ const initialState = {
   },
 }
 
+const formatReqName = (req, name) => `${req.toLowerCase()}${name[0].toUpperCase()}${name.substr(1)}`
+
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_PIZZA_SUCCESS:
+    case GET_CATALOG_SUCCESS:
       return {
         ...state,
-        pizza: action.data,
-        getPizza: stateCreator('success'),
+        [action.name]: action.data,
+        [formatReqName('get', action.name)]: stateCreator('success'),
       }
-    case GET_PIZZA_LOADING:
+    case GET_CATALOG_LOADING:
       return {
         ...state,
-        getPizza: stateCreator('loading'),
+        [formatReqName('get', action.name)]: stateCreator('loading'),
       }
-    case GET_PIZZA_FAILED:
+    case GET_CATALOG_FAILED:
       return {
         ...state,
-        getPizza: stateCreator('failed', action.error),
-      }
-    case GET_DRINKS_SUCCESS:
-      return {
-        ...state,
-        drinks: action.data,
-        getDrinks: stateCreator('success'),
-      }
-    case GET_DRINKS_LOADING:
-      return {
-        ...state,
-        getDrinks: stateCreator('loading'),
-      }
-    case GET_DRINKS_FAILED:
-      return {
-        ...state,
-        getDrinks: stateCreator('failed', action.error),
-      }
-    case GET_SALADS_SUCCESS:
-      return {
-        ...state,
-        salads: action.data,
-        getSalads: stateCreator('success'),
-      }
-    case GET_SALADS_LOADING:
-      return {
-        ...state,
-        getSalads: stateCreator('loading'),
-      }
-    case GET_SALADS_FAILED:
-      return {
-        ...state,
-        getSalads: stateCreator('failed', action.error),
+        [formatReqName('get', action.name)]: stateCreator('failed', action.error),
       }
     default: return state
   }

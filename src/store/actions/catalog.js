@@ -1,48 +1,19 @@
 import {
-  GET_PIZZA_SUCCESS,
-  GET_PIZZA_LOADING,
-  GET_PIZZA_FAILED,
-
-  GET_SALADS_SUCCESS,
-  GET_SALADS_LOADING,
-  GET_SALADS_FAILED,
-
-  GET_DRINKS_SUCCESS,
-  GET_DRINKS_LOADING,
-  GET_DRINKS_FAILED,
+  GET_CATALOG_SUCCESS,
+  GET_CATALOG_LOADING,
+  GET_CATALOG_FAILED,
 } from '../constants'
 import { get } from '../api'
 import apiErrorHandler from '../../services/apiErrorHandler'
 
-export const getPizzaAction = () => (dispatch) => {
-  dispatch({ type: GET_PIZZA_LOADING })
-  get('/pizza')
+export const getCatalog = (_name) => (dispatch) => {
+  const name = _name.toLowerCase()
+  dispatch({ type: GET_CATALOG_LOADING, name })
+  get(`/${name}`)
     .then((res) => {
-      dispatch({ type: GET_PIZZA_SUCCESS, data: res.data })
+      dispatch({ type: GET_CATALOG_SUCCESS, data: res.data, name })
     })
     .catch((err) => {
-      dispatch({ type: GET_PIZZA_FAILED, error: apiErrorHandler(err) })
-    })
-}
-
-export const getDrinksAction = () => (dispatch) => {
-  dispatch({ type: GET_DRINKS_LOADING })
-  get('/drinks')
-    .then((res) => {
-      dispatch({ type: GET_DRINKS_SUCCESS, data: res.data })
-    })
-    .catch((err) => {
-      dispatch({ type: GET_DRINKS_FAILED, error: apiErrorHandler(err) })
-    })
-}
-
-export const getSaladsAction = () => (dispatch) => {
-  dispatch({ type: GET_SALADS_LOADING })
-  get('/salads')
-    .then((res) => {
-      dispatch({ type: GET_SALADS_SUCCESS, data: res.data })
-    })
-    .catch((err) => {
-      dispatch({ type: GET_SALADS_FAILED, error: apiErrorHandler(err) })
+      dispatch({ type: GET_CATALOG_FAILED, error: apiErrorHandler(err), name })
     })
 }

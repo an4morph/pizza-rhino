@@ -9,7 +9,7 @@ import styles from './menu.module.scss'
 
 const categories = ['pizza', 'drinks', 'salads']
 
-function TopMenu({ className, hash }) {
+function TopMenu({ className, hash, onChangeCategory }) {
   const [activeTab, setActiveTab] = useState(null)
   const changeActive = (tab) => setActiveTab(activeTab === tab ? null : tab)
   const getTabStyles = (tab) => cx({
@@ -40,7 +40,12 @@ function TopMenu({ className, hash }) {
       {
         activeTab && (
           <div className={styles.result}>
-            {activeTab === 'categories' && <CategoriesList hash={hash} />}
+            {activeTab === 'categories' && (
+              <CategoriesList
+                onChangeCategory={onChangeCategory}
+                hash={hash}
+              />
+            )}
             {activeTab === 'filter' && <div>filter</div>}
           </div>
         )

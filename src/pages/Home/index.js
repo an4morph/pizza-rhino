@@ -4,21 +4,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import PageTemplate from '../../components/PageTemplate'
 import TopMenu from '../../components/TopMenu'
 import Catalog from '../../components/Catalog'
-import { getPizzaAction } from '../../store/actions/catalog'
+import { getCatalog } from '../../store/actions/catalog'
 import styles from './home.module.scss'
 
 function HomePage({ location }) {
   const dispatch = useDispatch()
-  const pizza = useSelector((state) => state.catalog.pizza)
+  const catalog = useSelector((state) => state.catalog)
+  const category = location.hash.substr(1) || 'pizza'
 
   useEffect(() => {
-    dispatch(getPizzaAction())
-  }, [dispatch])
+    dispatch(getCatalog(category))
+  }, [category, dispatch])
 
   return (
     <PageTemplate>
-      <TopMenu hash={location.hash.substr(1)} className={styles['top-menu']} />
-      <Catalog items={pizza} />
+      <TopMenu
+        hash={location.hash.substr(1)}
+        className={styles['top-menu']}
+      />
+      <Catalog items={catalog[category]} />
     </PageTemplate>
   )
 }
