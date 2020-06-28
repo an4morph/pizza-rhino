@@ -1,5 +1,4 @@
 import React from 'react'
-import cx from 'classnames'
 import { string } from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import styles from './menu.module.scss'
@@ -10,7 +9,7 @@ const categories = [
   { link: '#salads', text: 'salads' },
 ]
 
-function CategoriesList({ className, hash }) {
+function CategoriesList({ className, active }) {
   return (
     <div className={className}>
       {
@@ -18,7 +17,7 @@ function CategoriesList({ className, hash }) {
           <NavLink
             to={cat.link}
             key={cat.text}
-            className={hash !== cat.text ? styles.catLink : styles.activeCatLink}
+            className={active !== cat.text ? styles.catLink : styles.activeCatLink}
           >{cat.text}
           </NavLink>
         ))
@@ -29,6 +28,7 @@ function CategoriesList({ className, hash }) {
 
 CategoriesList.propTypes = {
   className: string,
+  active: string.isRequired,
 }
 
 export default CategoriesList

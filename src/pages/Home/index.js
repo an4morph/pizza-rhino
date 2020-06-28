@@ -7,10 +7,12 @@ import Catalog from '../../components/Catalog'
 import { getCatalog } from '../../store/actions/catalog'
 import styles from './home.module.scss'
 
+const DEFAULT_CATEGORY = 'pizza'
+
 function HomePage({ location }) {
   const dispatch = useDispatch()
   const catalog = useSelector((state) => state.catalog)
-  const category = location.hash.substr(1) || 'pizza'
+  const category = location.hash.substr(1) || DEFAULT_CATEGORY
 
   useEffect(() => {
     dispatch(getCatalog(category))
@@ -19,7 +21,7 @@ function HomePage({ location }) {
   return (
     <PageTemplate>
       <TopMenu
-        hash={location.hash.substr(1)}
+        category={category}
         className={styles['top-menu']}
       />
       <Catalog items={catalog[category]} />

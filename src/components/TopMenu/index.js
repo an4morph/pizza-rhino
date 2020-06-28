@@ -1,53 +1,69 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import cx from 'classnames'
 import { string } from 'prop-types'
-import ArrowDown from '../Icons/ArrowDown'
 import FilterIcon from '../Icons/Filter'
 import IconButton from '../IconButton'
 import CategoriesList from './CategoriesList'
 import styles from './menu.module.scss'
+import Select from './Select'
 
-const categories = ['pizza', 'drinks', 'salads']
+function TopMenu({ className, category }) {
+  const changeStatus = (tab, current = false) => {
+    const nextStatus = current ? 'active' : 'inactive'
+    return (!tab || tab === 'inactive') ? nextStatus : null
+  }
 
-function TopMenu({ className, hash, onChangeCategory }) {
-  const [activeTab, setActiveTab] = useState(null)
-  const changeActive = (tab) => setActiveTab(activeTab === tab ? null : tab)
-  const getTabStyles = (tab) => cx({
-    [styles[`${tab}-tab`]]: true,
-    [styles.active]: activeTab && activeTab === tab,
-    [styles.inactive]: activeTab && activeTab !== tab,
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'CATEGORY_TAB_CLICK':
+        return {
+          isOpen: state.categoryTab !== 'active',
+          categoryTab: changeStatus(state.categoryTab, true),
+          filterTab: changeStatus(state.categoryTab),
+        }
+      case 'FILTER_TAB_CLICK':
+        return {
+          isOpen: state.filterTab !== 'active',
+          filterTab: changeStatus(state.filterTab, true),
+          categoryTab: changeStatus(state.filterTab),
+        }
+      default:
+        throw new Error()
+    }
+  }
+  const initialState = { isOpen: false, categoryTab: null, filterTab: null }
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  const filterStyles = cx({
+    [styles.filter_btn]: true,
+    [styles.tab_active]: state.filterTab === 'active',
+    [styles.tab_inactive]: state.filterTab === 'inactive',
   })
-
-  const activeCategory = categories.includes(hash) ? hash : null
 
   return (
     <div className={className}>
       <div className={styles.tabs}>
-        <button
-          type="button"
-          onClick={() => changeActive('categories')}
-          className={getTabStyles('categories')}
-        >
-          <span className={styles['categories-tab-text']}>{activeCategory}</span>
-          <ArrowDown className={cx(styles.arrow, { [styles['arrow-up']]: activeTab && activeTab === 'categories' })} />
-        </button>
+        <Select
+          handleClick={() => dispatch({ type: 'CATEGORY_TAB_CLICK' })}
+          activeItem={category}
+          status={state.categoryTab}
+        />
         <IconButton
-          className={getTabStyles('filter')}
-          onClick={() => changeActive('filter')}
+          className={filterStyles}
+          onClick={() => dispatch({ type: 'FILTER_TAB_CLICK' })}
           icon={<FilterIcon />}
         />
       </div>
       {
-        activeTab && (
-          <div className={styles.result}>
-            {activeTab === 'categories' && (
-              <CategoriesList
-                onChangeCategory={onChangeCategory}
-                hash={hash}
-              />
-            )}
-            {activeTab === 'filter' && <div>filter</div>}
-          </div>
+        state.isOpen && (
+        <div className={styles.result}>
+          {state.categoryTab === 'active' && (
+            <CategoriesList
+              active={category}
+            />
+          )}
+          {state.filterTab === 'active' && <div>filter</div>}
+        </div>
         )
       }
     </div>
@@ -56,6 +72,7 @@ function TopMenu({ className, hash, onChangeCategory }) {
 
 TopMenu.propTypes = {
   className: string,
+  category: string.isRequired,
 }
 
 export default TopMenu

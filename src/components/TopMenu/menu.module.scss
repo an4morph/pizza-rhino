@@ -5,19 +5,11 @@
   justify-content: space-between;
 }
 
-.active {
-  border-radius: $borderRadius $borderRadius 0 0!important;
-}
-
-.inactive {
-  opacity: 0.5;
-}
-
 .filter-tab {
   color: $textColor;
 }
 
-.categories-tab {
+.select {
   background-color: $iconButtonBg;
   border: none;
   height: $buttonHeight;
@@ -30,7 +22,7 @@
     text-transform: uppercase;
   }
 
-  &-text {
+  &__text {
     margin-right: 40px;
   }
   
@@ -44,11 +36,18 @@
   padding: 15px;
 }
 
-.arrow {
+.select__arrow {
   transition: all $transitionMs;
+  &_up {
+    transform: rotate(180deg);
+  }
 }
-.arrow-up {
-  transform: rotate(180deg);
+
+.tab_active {
+  border-radius: $borderRadius $borderRadius 0 0!important;
+}
+.tab_inactive {
+  opacity: 0.5;
 }
 
 .catLink {
