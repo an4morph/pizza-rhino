@@ -1,0 +1,72 @@
+@import '../../styles/vars.scss';
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.active {
+  border-radius: $borderRadius $borderRadius 0 0!important;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
+.filter-tab {
+  color: $textColor;
+}
+
+.categories-tab {
+  background-color: $iconButtonBg;
+  border: none;
+  height: $buttonHeight;
+  border-radius: $borderRadius;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+
+  &-text {
+    margin-right: 40px;
+  }
+  
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.result {
+  background-color: $iconButtonBg;
+  padding: 15px;
+}
+
+.arrow {
+  transition: all $transitionMs;
+}
+.arrow-up {
+  transform: rotate(180deg);
+}
+
+.catLink {
+  display: block;
+  padding: 7px;
+  color: inherit;
+  border-bottom: 1px solid $siteBg;
+  text-decoration: none;
+  &:last-child {
+    border-bottom: none;
+  }
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.activeCatLink {
+  @extend .catLink;
+  font-weight: 700;
+}
+

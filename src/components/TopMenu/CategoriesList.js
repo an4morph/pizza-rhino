@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import cx from 'classnames'
 import { string } from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import styles from './menu.module.scss'
 
 const categories = [
-  { link: '/pizza', text: 'Pizza' },
-  { link: '/drinks', text: 'Drinks' },
-  { link: '/salads', text: 'Salads' },
+  { link: '#pizza', text: 'pizza' },
+  { link: '#drinks', text: 'drinks' },
+  { link: '#salads', text: 'salads' },
 ]
 
-function CategoriesList({ className }) {
+function CategoriesList({ className, hash }) {
   return (
     <div className={className}>
       {
@@ -17,7 +18,7 @@ function CategoriesList({ className }) {
           <NavLink
             to={cat.link}
             key={cat.text}
-            className={styles.catLink}
+            className={hash !== cat.text ? styles.catLink : styles.activeCatLink}
           >{cat.text}
           </NavLink>
         ))

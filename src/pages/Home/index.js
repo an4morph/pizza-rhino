@@ -1,4 +1,5 @@
 import React from 'react'
+import { object } from 'prop-types'
 import PageTemplate from '../../components/PageTemplate'
 import TopMenu from '../../components/TopMenu'
 import Catalog from '../../components/Catalog'
@@ -25,13 +26,17 @@ const mockPizza = [
   },
 ]
 
-function HomePage() {
+function HomePage({ location }) {
   return (
     <PageTemplate>
-      <TopMenu className={styles['top-menu']} />
+      <TopMenu hash={location.hash.substr(1)} className={styles['top-menu']} />
       <Catalog items={mockPizza} />
     </PageTemplate>
   )
+}
+
+HomePage.propTypes = {
+  location: object.isRequired,
 }
 
 export default HomePage
