@@ -35,3 +35,23 @@
 .content {
   padding: 0 15px;
 }
+
+.auth {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 29px;
+  margin-bottom: 39px;
+  &__login {
+    max-width: 135px;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .username {
+    margin-left: 13px;
+  }
+}
