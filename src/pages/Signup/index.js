@@ -5,7 +5,7 @@ import PageTemplate from '../../components/PageTemplate'
 import SignupForm from '../../components/SignupForm'
 
 const StyledPage = styled(PageTemplate)`
-  height: calc(100vh - ${(theme) => theme.sizes.headerHeight});
+  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
   display: flex;
   flex-direction: column;
   justify-content: center;

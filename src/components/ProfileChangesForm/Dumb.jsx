@@ -1,9 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 import { shape, string, func, bool } from 'prop-types'
 import Input from '../Input'
 import Form from '../Form'
 import Typography from '../Typography'
-import styles from './form.module.scss'
+
+const StyledInput = styled(Input)`
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+const StyledTitle = styled(Typography)`
+  margin-bottom: 14px;
+`
 
 function ProfileChangesForm({
   formName, formData, changeField, handleSubmit, failed,
@@ -19,10 +30,9 @@ function ProfileChangesForm({
       buttonText="Confirm changes"
       submitFailed={failed}
       error={error}
-      title={<Typography className={styles.title} tag="h2">Change password</Typography>}
+      title={<StyledTitle tag="h2">Change password</StyledTitle>}
     >
-      <Input
-        className={styles.field}
+      <StyledInput
         formName={formName}
         name="password"
         label="Password"
@@ -31,8 +41,7 @@ function ProfileChangesForm({
         type="password"
         error={showValidation ? validation.password : ''}
       />
-      <Input
-        className={styles.field}
+      <StyledInput
         formName={formName}
         name="repeatPassword"
         label="Repeat password"

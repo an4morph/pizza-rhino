@@ -1,28 +1,39 @@
 import React from 'react'
 import { shape, string, func, bool } from 'prop-types'
+import styled from 'styled-components'
 import Input from '../Input'
 import Form from '../Form'
 import Typography from '../Typography'
-import styles from './login.module.scss'
+
+const StyledInput = styled(Input)`
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+const StyledTitle = styled(Typography)`
+  text-align: center;
+  margin-bottom: 21px;
+  margin-top: 17px;
+`
 
 function LoginForm({
-  formName, formData, changeField, handleSubmit, className,
+  formName, formData, changeField, handleSubmit,
   loading, failed, error, validation, showValidation,
 }) {
   const { username, password } = formData
 
   return (
     <Form
-      className={className}
       onSubmit={handleSubmit}
       submitting={loading}
       buttonText="Log in"
       submitFailed={failed}
       error={error}
-      title={<Typography className={styles.title} tag="h1">Log in</Typography>}
+      title={<StyledTitle tag="h1">Log in</StyledTitle>}
     >
-      <Input
-        className={styles.field}
+      <StyledInput
         formName={formName}
         name="username"
         label="Username"
@@ -30,8 +41,7 @@ function LoginForm({
         onChange={(value) => changeField('username', value)}
         error={showValidation ? validation.username : ''}
       />
-      <Input
-        className={styles.field}
+      <StyledInput
         formName={formName}
         name="password"
         label="Password"
@@ -60,7 +70,6 @@ LoginForm.propTypes = {
   failed: bool.isRequired,
   error: string,
   showValidation: bool.isRequired,
-  className: string,
 }
 
 export default LoginForm
