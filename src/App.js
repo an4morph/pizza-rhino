@@ -7,19 +7,22 @@ import Profile from './pages/Profile'
 import Cart from './pages/Cart'
 import NotFound from './pages/NotFound'
 import PrivateRoute from './components/PrivateRoute'
+import Theme from './Theme'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/login" component={Login} exact />
-        <Route path="/signup" component={Signup} exact />
-        <PrivateRoute path="/profile" component={Profile} exact />
-        <Route path="/cart" component={Cart} exact />
-        <Route component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <Theme>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/login" component={Login} exact />
+          <Route path="/signup" component={Signup} exact />
+          <PrivateRoute path="/profile" component={Profile} exact />
+          <Route path="/cart" component={Cart} exact />
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+    </Theme>
   )
 }
 

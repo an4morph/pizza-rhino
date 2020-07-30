@@ -1,18 +1,21 @@
 import React from 'react'
 import { object } from 'prop-types'
+import styled from 'styled-components'
 import PageTemplate from '../../components/PageTemplate'
 import ProfileChangesForm from '../../components/ProfileChangesForm'
 import BackTitle from '../../components/BackTitle'
-import styles from './page.module.scss'
+
+const StyledTitle = styled(BackTitle)`
+  margin-bottom: 20px;
+`
 
 function ProfilePage({ history }) {
   return (
     <PageTemplate>
-      <BackTitle
+      <StyledTitle
         history={history}
         title="Profile"
         subtitle="Settings"
-        className={styles.title}
       />
       <ProfileChangesForm />
     </PageTemplate>

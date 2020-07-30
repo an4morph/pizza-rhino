@@ -1,9 +1,0 @@
-@import '../../styles/vars.scss';
-
-.page {
-  height: calc(100vh - #{$headerHeight});
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-}

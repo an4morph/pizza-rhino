@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
 import { object } from 'prop-types'
+import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import PageTemplate from '../../components/PageTemplate'
 import TopMenu from '../../components/TopMenu'
 import Catalog from '../../components/Catalog'
 import { getCatalog } from '../../store/actions/catalog'
-import styles from './home.module.scss'
 
 const DEFAULT_CATEGORY = 'pizza'
+
+const StyledTopMenu = styled(TopMenu)`
+  margin-bottom: 24px;
+`
 
 function HomePage({ location }) {
   const dispatch = useDispatch()
@@ -20,10 +24,7 @@ function HomePage({ location }) {
 
   return (
     <PageTemplate>
-      <TopMenu
-        category={category}
-        className={styles['top-menu']}
-      />
+      <StyledTopMenu category={category} />
       <Catalog items={catalog[category]} />
     </PageTemplate>
   )

@@ -1,14 +1,22 @@
 import React from 'react'
 import { object } from 'prop-types'
+import styled from 'styled-components'
 import PageTemplate from '../../components/PageTemplate'
 import SignupForm from '../../components/SignupForm'
-import styles from './page.module.scss'
+
+const StyledPage = styled(PageTemplate)`
+  height: calc(100vh - ${(theme) => theme.sizes.headerHeight});
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+`
 
 function SignupPage({ history }) {
   return (
-    <PageTemplate className={styles.page}>
+    <StyledPage>
       <SignupForm history={history} />
-    </PageTemplate>
+    </StyledPage>
   )
 }
 
