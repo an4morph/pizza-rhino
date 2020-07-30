@@ -3,8 +3,13 @@ import { ThemeProvider } from 'styled-components'
 import { node } from 'prop-types'
 
 const theme = {
+  colors: {
+    iconButtonBg: '#FFFFFF',
+  },
   sizes: {
     headerHeight: '70px',
+    buttonHeight: '38px',
+    borderRadius: '2px',
   },
 }
 

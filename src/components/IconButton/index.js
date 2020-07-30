@@ -1,24 +1,35 @@
 import React from 'react'
-import { func, node, string, bool } from 'prop-types'
-import cx from 'classnames'
-import styles from './button.module.scss'
+import { func, node, bool } from 'prop-types'
+import styled from 'styled-components'
 
-function IconButton({ icon, onClick, className, transparent }) {
+const StyledButton = styled.button`
+  background-color: ${({ theme, transparent }) => (transparent ? 'transparent' : theme.colors.iconButtonBg)};
+  border: none;
+  width: ${({ theme }) => theme.sizes.buttonHeight};
+  height: ${({ theme }) => theme.sizes.buttonHeight};
+  border-radius: ${({ theme }) => theme.sizes.borderRadius};
+  padding: 0;
+  cursor: pointer;
+  &:focus {
+    box-shadow: none;
+  }
+`
+
+function IconButton({ icon, onClick, transparent }) {
   return (
-    <button
+    <StyledButton
       type="button"
       onClick={onClick}
-      className={cx(styles.button, className, { [styles.transparent]: transparent })}
+      transparent={transparent}
     >
       {icon}
-    </button>
+    </StyledButton>
   )
 }
 
 IconButton.propTypes = {
   onClick: func,
   icon: node.isRequired,
-  className: string,
   transparent: bool,
 }
 
