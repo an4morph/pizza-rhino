@@ -1,23 +1,32 @@
 import React from 'react'
-import cx from 'classnames'
 import { string, object } from 'prop-types'
+import styled from 'styled-components'
 import IconButton from '../IconButton'
 import Typography from '../Typography'
 import ArrowBack from '../Icons/ArrowBack'
-import styles from './title.module.scss'
 
-function BackTitle({ title, subtitle, history, className }) {
+const Container = styled.div`
+  display: flex;
+`
+const Text = styled.div`
+  margin-left: 20px;
+`
+const StyledTitle = styled(Typography)`
+  line-height: 20px;
+`
+
+function BackTitle({ title, subtitle, history }) {
   return (
-    <div className={cx(styles.container, className)}>
+    <Container>
       <IconButton
         onClick={() => history.goBack()}
         icon={<ArrowBack />}
       />
-      <div className={styles.text}>
-        <Typography className={styles.title} tag="h1">{title}</Typography>
+      <Text>
+        <StyledTitle tag="h1">{title}</StyledTitle>
         <Typography tag="h3">{subtitle}</Typography>
-      </div>
-    </div>
+      </Text>
+    </Container>
   )
 }
 
@@ -25,7 +34,6 @@ BackTitle.propTypes = {
   title: string.isRequired,
   subtitle: string.isRequired,
   history: object.isRequired,
-  className: string,
 }
 
 export default BackTitle
