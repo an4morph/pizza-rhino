@@ -4,8 +4,11 @@ import { node } from 'prop-types'
 
 const theme = {
   colors: {
+    invertMainColor: '#FFFFFF',
     iconButtonBg: '#FFFFFF',
     iconColor: '#DAD5D2',
+    formBg: '#FFFFFF',
+    errorColor: '#C14A4A',
   },
   sizes: {
     headerHeight: '70px',

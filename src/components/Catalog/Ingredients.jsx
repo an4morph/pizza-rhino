@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Typography from '../Typography'
 
 const Container = styled(Typography)`
-  background-color: $invertMainColor;
+  background-color: ${({ theme }) => theme.colors.invertMainColor};
   display: block;
   padding: 6px 8px;
 `

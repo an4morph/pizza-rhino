@@ -1,17 +1,22 @@
 import React from 'react'
-import cx from 'classnames'
 import { string } from 'prop-types'
-import styles from './form.module.scss'
+import styled from 'styled-components'
 
-function FormError({ error = 'Unknown error', className }) {
+const StyledError = styled.div`
+  color: ${({ theme }) => theme.colors.errorColor};
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+`
+
+function FormError({ error = 'Unknown error' }) {
   return (
-    <div className={cx(styles['form-error'], className)}>{error}</div>
+    <StyledError>{error}</StyledError>
   )
 }
 
 FormError.propTypes = {
   error: string,
-  className: string,
 }
 
 export default FormError

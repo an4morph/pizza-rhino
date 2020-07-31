@@ -1,32 +1,41 @@
 import React from 'react'
-import cx from 'classnames'
 import { node, string, func, bool } from 'prop-types'
+import styled from 'styled-components'
 import Button from '../Button'
 import FormError from './Error'
-import styles from './form.module.scss'
 
-function Form({ children, className, onSubmit, buttonText = 'submit',
+const StyledForm = styled.form`
+  background-color: ${({ theme }) => theme.colors.formBg};;
+  padding: 23px;
+  border-radius: ${({ theme }) => theme.sizes.borderRadius};
+`
+const StyledError = styled(FormError)`
+  margin-top: 12px;
+`
+const StyledButton = styled(Button)`
+  margin-top: 20px;
+`
+
+function Form({ children, onSubmit, buttonText = 'submit',
   submitFailed, submitting, error = 'Unknown error', title,
 }) {
   return (
-    <form className={cx(styles.form, className)}>
+    <StyledForm>
       {title}
       <div>{children}</div>
-      {submitFailed && <FormError className={styles.error} error={error} />}
-      <Button
-        className={styles.btn}
+      {submitFailed && <StyledError error={error} />}
+      <StyledButton
         disabled={submitting}
         onClick={onSubmit}
       >
         {buttonText}
-      </Button>
-    </form>
+      </StyledButton>
+    </StyledForm>
   )
 }
 
 Form.propTypes = {
   children: node.isRequired,
-  className: string,
   onSubmit: func,
   buttonText: string,
   submitFailed: bool,
