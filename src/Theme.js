@@ -5,11 +5,13 @@ import { node } from 'prop-types'
 const theme = {
   colors: {
     iconButtonBg: '#FFFFFF',
+    iconColor: '#DAD5D2',
   },
   sizes: {
     headerHeight: '70px',
     buttonHeight: '38px',
     borderRadius: '2px',
+    catalogImageSize: '100px',
   },
 }
 
