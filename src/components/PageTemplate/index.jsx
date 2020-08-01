@@ -1,5 +1,5 @@
 import React from 'react'
-import { node } from 'prop-types'
+import { node, string } from 'prop-types'
 import styled from 'styled-components'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
@@ -8,7 +8,7 @@ const Container = styled.div`
   padding: 15px;
 `
 
-function PageTemplate({ children }) {
+function PageTemplate({ children, className }) {
   const [isOpenSidebar, setSidebarOpen] = React.useState(false)
   return (
     <>
@@ -19,13 +19,14 @@ function PageTemplate({ children }) {
         isOpen={isOpenSidebar}
         onCloseBtnClick={() => setSidebarOpen(false)}
       />
-      <Container>{children}</Container>
+      <Container className={className}>{children}</Container>
     </>
   )
 }
 
 PageTemplate.propTypes = {
   children: node.isRequired,
+  className: string,
 }
 
 export default PageTemplate

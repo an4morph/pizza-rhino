@@ -4,24 +4,37 @@ import BasketIcon from '../../Icons/Basket'
 import ListItem from './ListItem'
 import styles from './menu.module.scss'
 import Dropdown from './Dropdown'
+import styled from 'styled-components';
+import { string } from 'prop-types'
 
-function SidebarMenu() {
+const LiBasket = styled.li`
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+`;
+const StyledListItem = styled(ListItem)`
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+function SidebarMenu({className}) {
   return (
     <menu>
-      <li className={cx(styles.basket, styles.li_category)}>
-        <ListItem
+      <LiBasket className={className}>
+        <StyledListItem
           link="/basket"
-          className={styles.basket}
           text="Basket"
           icon={<BasketIcon />}
         >212.50$
-        </ListItem>
+        </StyledListItem>
         <Dropdown subMenu={[{ id: 1, text: 'Pizza', link: '/#pizza' }]} />
-      </li>
+      </LiBasket>
     </menu>
   )
 }
 
-SidebarMenu.propTypes = {}
+SidebarMenu.propTypes = {
+  className: string
+}
 
 export default SidebarMenu

@@ -26,7 +26,7 @@ function Sidebar({ isOpen, onCloseBtnClick }) {
     <Container isOpen={isOpen}>
       <SidebarHeader onClose={onCloseBtnClick} />
       <Content>
-        <AuthBlock isLogged={true}/>
+        <AuthBlock isLogged />
         <Menu />
       </Content>
     </Container>

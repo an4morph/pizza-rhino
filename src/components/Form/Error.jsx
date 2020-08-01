@@ -9,14 +9,15 @@ const StyledError = styled.div`
   text-align: center;
 `
 
-function FormError({ error = 'Unknown error' }) {
+function FormError({ error = 'Unknown error', className }) {
   return (
-    <StyledError>{error}</StyledError>
+    <StyledError className={className}>{error}</StyledError>
   )
 }
 
 FormError.propTypes = {
   error: string,
+  className: string,
 }
 
 export default FormError

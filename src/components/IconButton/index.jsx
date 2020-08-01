@@ -1,5 +1,5 @@
 import React from 'react'
-import { func, node, bool } from 'prop-types'
+import { func, node, bool, string } from 'prop-types'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
@@ -15,12 +15,13 @@ const StyledButton = styled.button`
   }
 `
 
-function IconButton({ icon, onClick, transparent }) {
+function IconButton({ icon, onClick, transparent, className }) {
   return (
     <StyledButton
       type="button"
       onClick={onClick}
       transparent={transparent}
+      className={className}
     >
       {icon}
     </StyledButton>
@@ -31,6 +32,7 @@ IconButton.propTypes = {
   onClick: func,
   icon: node.isRequired,
   transparent: bool,
+  className: string,
 }
 
 export default IconButton

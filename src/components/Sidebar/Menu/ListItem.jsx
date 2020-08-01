@@ -1,18 +1,37 @@
 import React from 'react'
-import cx from 'classnames'
 import { string, node, bool } from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import styles from './menu.module.scss'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+`
+const Divider = styled.div`
+  background-color: $menuDivider;
+  border-radius: 2px;
+  height: 1px;
+  width: 100%;
+`
+const Icon = styled.i`
+  margin-right: 15px;
+  display: inherit;
+`
+const Text = styled.div`
+  flex: 1;
+`
 
 function ListItem({ link, text, icon, className, children, divider = true }) {
   const element = (
     <>
-      <div className={cx(styles.list_item_text, className)}>
-        <div className={styles.list_icon}>{icon}</div>
-        <div className={styles.text}>{text}</div>
+      <Container className={className}>
+        <Icon>{icon}</Icon>
+        <Text>{text}</Text>
         {children}
-      </div>
-      {divider && <div className={styles.divider} />}
+      </Container>
+      {divider && <Divider />}
     </>
   )
   return link ? <NavLink to={link}>{element}</NavLink> : element

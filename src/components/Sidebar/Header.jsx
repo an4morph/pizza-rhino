@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: $headerHeight;
+  height: ${({ theme }) => theme.sizes.headerHeight};
 `
 const CloseButton = styled(IconButton)`
   color: ${({ theme }) => theme.colors.iconColor};

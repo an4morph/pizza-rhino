@@ -15,9 +15,9 @@ const StyledTitle = styled(Typography)`
   line-height: 20px;
 `
 
-function BackTitle({ title, subtitle, history }) {
+function BackTitle({ title, subtitle, history, className }) {
   return (
-    <Container>
+    <Container className={className}>
       <IconButton
         onClick={() => history.goBack()}
         icon={<ArrowBack />}
@@ -34,6 +34,7 @@ BackTitle.propTypes = {
   title: string.isRequired,
   subtitle: string.isRequired,
   history: object.isRequired,
+  className: string,
 }
 
 export default BackTitle
