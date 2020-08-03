@@ -1,6 +1,30 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { node } from 'prop-types'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: ${({ theme }) => theme.fonts.primaryFont};
+    color: ${({ theme }) => theme.fonts.textColor};
+    background-color: ${({ theme }) => theme.colors.siteBg};
+  }
+  ::selection {
+    background-color: $linkColor;
+    color: $invertMainColor;
+  }
+
+  input, textarea, button {
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 0px 2px $linkColor;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`
 
 const theme = {
   colors: {
@@ -22,6 +46,7 @@ const theme = {
     tabsBg: '#FFFFFF',
     menuDivider: '#F5F5F5',
     headerBg: '#FFFFFF',
+    bgFocus: '#f7f7f7',
   },
   sizes: {
     headerHeight: '70px',
@@ -31,9 +56,9 @@ const theme = {
     inputHeight: '38px',
   },
   fonts: {
-    secondaryFont: "'Raleway', sans-serif",
-    primaryFont: "'Rubik', sans-serif",
-    headingsFont: "'Rubik Mono One', sans-serif",
+    secondaryFont: '"Raleway", sans-serif',
+    primaryFont: 'Rubik, sans-serif',
+    headingsFont: 'Rubik Mono One, sans-serif',
   },
   others: {
     outline: '2px solid #65A5E0',
@@ -43,7 +68,10 @@ const theme = {
 }
 
 const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    {children}
+  </ThemeProvider>
 )
 
 Theme.propTypes = {
