@@ -9,6 +9,8 @@ const StyledButton = styled(Button)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px;
+  font-size: 18px;
   &:focus {
     background-color: ${({ theme }) => theme.colors.bgFocus};
     outline: none;
@@ -17,6 +19,7 @@ const StyledButton = styled(Button)`
 const SubMenu = styled.ul`
   width: 100%;
   margin: 0;
+  padding-left: 44px;
 `
 const ArrowIcon = styled(ArrowDown)`
   transform: rotate(${({ $isOpen }) => ($isOpen ? '0' : '-180deg')});

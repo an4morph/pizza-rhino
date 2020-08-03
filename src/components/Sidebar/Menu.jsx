@@ -5,6 +5,7 @@ import FoodIcon from '../Icons/Food'
 import BasketIcon from '../Icons/Basket'
 import ListItem from './ListItem'
 import Dropdown from './Dropdown'
+import Divider from '../Divider'
 
 const StyledMenu = styled.menu`
   margin: 0;
@@ -14,9 +15,20 @@ const Price = styled.div`
   font-size: 18px;
   font-weight: 700;
 `
-const StyledNavLink = styled(NavLink)`
+const activeClassName = 'active'
+const StyledLink = styled(NavLink).attrs({ activeClassName })`
   display: flex;
   width: 100%;
+  &.${activeClassName} {
+    font-weight: 700;
+  }
+`
+const MenuLink = styled(StyledLink)`
+  padding: 12px;
+  font-size: 18px;
+`
+const SubMenuLink = styled(StyledLink)`
+  padding: 6px;
 `
 const ItemText = styled.div`
   flex: 1;
@@ -34,16 +46,25 @@ function Menu() {
   return (
     <StyledMenu>
       <ListItem>
-        <StyledNavLink to="/cart">
+        <MenuLink to="/cart">
           <BasketIcon />
           <ItemText>Basket</ItemText>
           <Price>$212.50</Price>
-        </StyledNavLink>
+        </MenuLink>
+        <Divider />
       </ListItem>
       <Dropdown mainElement={foodMenu}>
-        <ListItem level={2}>
-          Basket
-        </ListItem>
+        <SubMenuLink exact to="/#pizza">
+          Pizza
+        </SubMenuLink>
+        <Divider />
+        <SubMenuLink exact to="/#drinks">
+          Drinks
+        </SubMenuLink>
+        <Divider />
+        <SubMenuLink exact to="/profile">
+          Profile
+        </SubMenuLink>
       </Dropdown>
     </StyledMenu>
   )
