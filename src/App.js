@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -8,8 +9,13 @@ import Cart from './pages/Cart'
 import NotFound from './pages/NotFound'
 import PrivateRoute from './components/PrivateRoute'
 import Theme from './Theme'
+import { getMeAction } from './store/actions/auth'
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getMeAction())
+  }, [dispatch])
   return (
     <Theme>
       <BrowserRouter>

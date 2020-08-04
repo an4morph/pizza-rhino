@@ -6,18 +6,18 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: ${({ theme }) => theme.fonts.primaryFont};
-    color: ${({ theme }) => theme.fonts.textColor};
+    color: ${({ theme }) => theme.colors.textColor};
     background-color: ${({ theme }) => theme.colors.siteBg};
   }
   ::selection {
-    background-color: $linkColor;
-    color: $invertMainColor;
+    background-color: ${({ theme }) => theme.colors.linkColor};
+    color: ${({ theme }) => theme.colors.invertMainColor};
   }
 
   input, textarea, button {
     &:focus {
       outline: none;
-      box-shadow: 0px 0px 0px 2px $linkColor;
+      box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.colors.linkColor};
     }
   }
   a {

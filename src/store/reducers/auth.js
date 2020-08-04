@@ -1,4 +1,8 @@
 import {
+  GET_ME_SUCCESS,
+  GET_ME_LOADING,
+  GET_ME_FAILED,
+
   LOGIN_SUCCESS,
   LOGIN_LOADING,
   LOGIN_FAILED,
@@ -15,6 +19,12 @@ import stateCreator from '../../services/stateCreator'
 
 const initialState = {
   me: null,
+  getMe: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
   login: {
     success: false,
     loading: false,
@@ -37,6 +47,22 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_ME_SUCCESS:
+      return {
+        ...state,
+        me: action.me,
+        getMe: stateCreator('success'),
+      }
+    case GET_ME_LOADING:
+      return {
+        ...state,
+        getMe: stateCreator('loading'),
+      }
+    case GET_ME_FAILED:
+      return {
+        ...state,
+        getMe: stateCreator('failed', action.error),
+      }
     case LOGIN_SUCCESS:
       return {
         ...state,

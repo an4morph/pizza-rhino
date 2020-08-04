@@ -1,3 +1,7 @@
+export const GET_ME_SUCCESS = 'GET_ME_SUCCESS'
+export const GET_ME_LOADING = 'GET_ME_LOADING'
+export const GET_ME_FAILED = 'GET_ME_FAILED'
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_LOADING = 'LOGIN_LOADING'
 export const LOGIN_FAILED = 'LOGIN_FAILED'
