@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.invertMainColor};
   }
 
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   input, textarea, button {
     &:focus {
       outline: none;
