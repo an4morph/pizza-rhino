@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'query-string'
 
-const ENDPOINT = 'http://localhost:1717'
+const ENDPOINT = proccess.env.REACT_APP_API_URL
 
 export const createUrl = (route, prms = null) => {
   const params = prms ? `?${qs.stringify(prms)}` : ''
